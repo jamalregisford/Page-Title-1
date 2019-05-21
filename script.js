@@ -7,15 +7,20 @@ var happyImages = [
 var sadImages = ["https://cdn.shopify.com/s/files/1/1061/1924/products/Emoji_Icon_-_Sad_Emoji_large.png?v=1542436016","https://i.pinimg.com/originals/b2/79/66/b27966140db68d0621628f2309f8a443.gif","https://o.aolcdn.com/images/dims3/GLOB/legacy_thumbnail/630x315/format/jpg/quality/85/http%3A%2F%2Fi.huffpost.com%2Fgen%2F4082068%2Fimages%2Fn-VIOLENCE-WOMEN-628x314.jpg"];
 
 
-var excitedimage=["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPWgHvcIq6Pu7HyRsSpuyGoM3L5SN6URHjrSasbIx8XS7oHyIN"
+var excitedImages=["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPWgHvcIq6Pu7HyRsSpuyGoM3L5SN6URHjrSasbIx8XS7oHyIN"
     
     ];
 
 
 $('button').click(function(){
     var mood = $('input').val();
-    $(".images").html("");
-   
+    $(".images").html(mood);
+   if (mood==="happy"){happyMood();
+   displayImages(happyImages);}
+   else if(mood==="sad"){sadMood();
+   displayImages(sadImages);}
+   else if (mood==="excited"){excitedMood();
+   displayImages(excitedImages);}
 });
 
 
@@ -26,7 +31,7 @@ function sadMood(){
     $("body").css("background-color","green");
 }
 
-function excitedmood(){
+function excitedMood(){
     $("body").css("background-color","red");
 }
 
@@ -38,4 +43,7 @@ function changeTextColor(color){
 
 function displayImages(images){
   
+images.forEach(function(element) {
+$(".images").append("<img src="+element + ">");
+});
 }
